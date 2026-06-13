@@ -24,8 +24,8 @@ def model(y, t):
     v4 = k4*A
 
     # Differential equations
-    dAdt = v1 - v2 - v4
-    dBdt = v2 - v3
+    dAdt = v1-v2-v4
+    dBdt = v2-v3
     dPdt = v3
 
     return [dAdt, dBdt, dPdt]
@@ -40,11 +40,16 @@ t = np.linspace(0,50,500)
 sol = odeint(model,y0,t)
 
 # Plot
+plt.figure(figsize=(7,5))
+
 plt.plot(t,sol[:,0],label='A')
 plt.plot(t,sol[:,1],label='B')
 plt.plot(t,sol[:,2],label='P')
 
 plt.xlabel('Time')
 plt.ylabel('Concentration')
+plt.title('Dynamic Simulation of Metabolite Concentrations')
 plt.legend()
+plt.grid()
+
 plt.show()
